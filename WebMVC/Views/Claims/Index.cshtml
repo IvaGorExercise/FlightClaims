@@ -1,0 +1,31 @@
+﻿@model WebMVC.ViewModels.ClaimViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <h3>Your Flight wad delayed or cancelled</h3>
+    <h2>Get your compensation!</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Delayed">
+            <div class="form-group">
+                <input type="submit" value="Flight delayed" class="btn btn-primary" />
+            </div>
+        </form>
+        <form asp-action="Canceled">
+            <div class="form-group">
+                <input type="submit" value="Flight canceled" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Home</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

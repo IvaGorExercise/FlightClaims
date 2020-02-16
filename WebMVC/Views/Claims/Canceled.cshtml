@@ -1,0 +1,75 @@
+﻿@model WebMVC.ViewModels.ClaimViewModel
+
+@{
+    ViewData["Title"] = "Canceled";
+}
+
+<h2>Your Flight was canceled</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="PostClaim">
+            @Html.HiddenFor(m => m.Consequence);
+            @Html.HiddenFor(m => m.NewFlightNumber);
+            @Html.HiddenFor(m => m.NewFlightDate);
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <select asp-for="@Model.Reason" asp-items="@(new SelectList(Model.ReasonList,"Value","Text"))" class="form-control">
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PolicyNumber" class="control-label"></label>
+                <input asp-for="PolicyNumber" class="form-control" />
+                <span asp-validation-for="PolicyNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OriginalFlightNumber" class="control-label"></label>
+                <input asp-for="OriginalFlightNumber" class="form-control" />
+                <span asp-validation-for="OriginalFlightNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OriginalFlightDate" class="control-label"></label>
+                <input asp-for="OriginalFlightDate" class="form-control" />
+                <span asp-validation-for="OriginalFlightDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewFlightNumber" class="control-label"></label>
+                <input asp-for="NewFlightNumber" class="form-control" />
+                <span asp-validation-for="NewFlightNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewFlightDate" class="control-label"></label>
+                <input asp-for="NewFlightDate" class="form-control" />
+                <span asp-validation-for="NewFlightDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Send" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Home</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
